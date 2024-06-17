@@ -11,9 +11,9 @@ import { LogLevel } from "@azure/msal-browser";
 export const msalConfig = {
     auth: {
         clientId: "25bbeef2-e930-4f1d-b236-d001b9fdea61",
-        authority: "https://login.microsoftonline.com/29ddc8c2-40d0-4944-9e2b-ac6719008703",
+        authority: "https://login.microsoftonline.com/29ddc8c2-40d0-4944-9e2b-ac6719008703/",
         redirectUri: "http://localhost:5173/auth/callback",
-        secret:""
+       
     },
     cache: {
         cacheLocation: "sessionStorage", // This configures where your cache will be stored

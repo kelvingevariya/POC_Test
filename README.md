@@ -27,7 +27,7 @@
 
 - Under Platform configurations, select Add a platform.
 
-- Under Configure platforms, select the tile (Single Page Application) for your application type (platform) to configure its settings then add the URL http://localhost:5173/auth/callback (You can change accorgingl by seeing the url in authConfig.js)
+- Under Configure platforms, select the tile (Single Page Application) for your application type (platform) to configure its settings then add the URL http://localhost:5173/auth/callback (You can change accorgingly by seeing the url in authConfig.js)
 
 
 ### Step 2 Creat the react project with following Folder structure
