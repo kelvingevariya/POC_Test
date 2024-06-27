@@ -1,6 +1,7 @@
 import React from "react";
+import FileUpload from "./FileUpload"
 /**
- * Renders information about the user obtained from MS Graph 
+ * Renders information about the user obtained from MS Graph
  * @param props
  */
 export const ProfileData = (props) => {
@@ -18,6 +19,10 @@ export const ProfileData = (props) => {
       <p>
         <strong>Id: </strong> {props.graphData.id}
       </p>
+
+      <div className="p-10">
+        <FileUpload/>
+      </div>
     </div>
   );
 };

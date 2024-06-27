@@ -1,8 +1,6 @@
 
-
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "./SignInButton";
 import { SignOutButton } from "./SignOutButton";
@@ -33,7 +31,7 @@ export const PageLayout = (props) => {
         </center>
       </h5>
       <br />
-      <br />
+      <br />  
       {props.children}
     </>
   );
