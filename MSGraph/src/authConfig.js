@@ -5,6 +5,9 @@ import { LogLevel } from "@azure/msal-browser";
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md
  */
 
+// b1a1ef62-0752-4bbf-9ff4-3157337cdc21  ID(MULTI )
+//  d110a14e-41e1-4e33-b269-012bdf160d76  TID
+
 // all accounts CID 53168e2a-ed72-493e-a001-6dd58f7b525f
 //  TID d110a14e-41e1-4e33-b269-012bdf160d76
 
@@ -14,8 +17,8 @@ import { LogLevel } from "@azure/msal-browser";
 // Personal CID 7f3bbfcb-641a-4461-9211-96895c07855d
 export const msalConfig = {
     auth: {
-        clientId: "53168e2a-ed72-493e-a001-6dd58f7b525f",
-        authority: "https://login.microsoftonline.com/common/",
+        clientId: "b1a1ef62-0752-4bbf-9ff4-3157337cdc21",
+        authority: "https://login.microsoftonline.com/d110a14e-41e1-4e33-b269-012bdf160d76/",
         redirectUri: "http://localhost:5173/auth/callback",
     },
     cache: {
@@ -56,7 +59,7 @@ export const msalConfig = {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 export const loginRequest = {
-    scopes: ["User.Read","Mail.Send","Mail.Send.Shared","Files.ReadWrite.All","User.ReadBasic.All","User.Read.All","AdministrativeUnit.Read.All","People.Read.All"]
+    scopes: ["User.Read","Mail.Send","Mail.Send.Shared","Files.ReadWrite.All","User.ReadBasic.All","User.Read.All","AdministrativeUnit.Read.All","People.Read.All","Files.Read.All"]
 };
 
 /**

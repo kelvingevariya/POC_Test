@@ -3,18 +3,32 @@ import { GraphContext } from "../App"
 // import {OneDriveFileUploadTask} from "@microsoft/microsoft-graph-client"
 import { OneDriveLargeFileUploadTask } from "@microsoft/microsoft-graph-client"
 
-
+// "testuser2@zerotimesolutions.onmicrosoft.com"
 function FileUpload() {
   const [file,setFile] = useState({})
   const [loader,setLoder] = useState(null)
   const graphClient = useContext(GraphContext)
   console.log(file)
 
-
-  async function getAllUser(){
+// "ztechies@zerotimesolutions.onmicrosoft.com"
+  async function getAllUser(email){
     const response = await graphClient.api('/users').select('id,mail').get();
+    const data = response.value;
+    const user = data.find((obj)=>obj.mail==="testuser2@zerotimesolutions.onmicrosoft.com")
+    console.log("User",user)
+    console.log("Data ",response.value)
+    try {
+      const drive = await graphClient.api(`/users/${user.id}/drive/root`).get()
+      graphClient
+      console.log(drive)
 
-    response.value.find((data)=>data.email==="ztechies@zerotimesolutions.onmicrosoft.com")
+
+    } catch (error) {
+      console.log(error)
+    }
+
+    return user
+
   }
 
   const getEmail = async () => {
@@ -37,6 +51,11 @@ function FileUpload() {
             emailAddress: {
               address: await getEmail()
             }
+          },
+          {
+            emailAddress: {
+              address: "ztechies@zerotimesolutions.onmicrosoft.com"
+            }
           }
         ],
 
@@ -56,26 +75,24 @@ function FileUpload() {
   }
   }
   const onSubmitHandle = async (event) => {
-
+    const data = new FormData()
+    data.append("file",file)
     event.preventDefault()
     if(file.name&&file!==""){
     setLoder("Loading...")
     try {
 
-      let options = {
-          path: "/",
-          fileName: file.name,
-          rangeSize: 1024 * 1024 // must be a multiple of 320 KiB
-      };
-      const uploadTask = await OneDriveLargeFileUploadTask
-          .create(graphClient, file,options);
+      fetch("http://localhost:4002/",{
+        method:"POST",
+        body:data
+      })
 
 
-       await uploadTask.upload().then((response)=>{
-        setLoder("File Uploaded")
-        sendMailNofication()
-        console.log(`File ${response.name} of ${response.size} bytes uploaded`);
-       });
+      //  await uploadTask.upload().then((response)=>{
+      //   setLoder("File Uploaded")
+      //   sendMailNofication()
+      //   console.log(`File ${response.name} of ${response.size} bytes uploaded`);
+      //  });
 
 
 
