@@ -9,7 +9,7 @@ const clientConfig = {
     clientId: "b1a1ef62-0752-4bbf-9ff4-3157337cdc21",
     authority:
       "https://login.microsoftonline.com/d110a14e-41e1-4e33-b269-012bdf160d76/",
-    clientSecret: "OcT8Q~OKlnQ8TxrZgj9LaTzw7K8L_YVO.zE6naf9",
+    clientSecret: process.env.CLIENT_SECRET,
   },
 };
 export const cca = new msal.ConfidentialClientApplication(clientConfig);
